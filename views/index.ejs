@@ -5,12 +5,21 @@
     <title></title>
   </head>
   <body>
-    <h1>Welcome to Beer App</h1>
-    <nav>
-      <ul>
-        <li><a href="/sessions/new">Log In</a></li>
-        <li><a href="/users/new">Register</a></li>
+    <h1>
+    <% if (currentUser) { %>
+        Welcome <%=currentUser.username %>!
+        <form class="/sessions?_method=DELETE" method="POST">
+          <input type="submit" value="Log Out" >
+        </form>
+        <a href="/app">Continue to Beer Page</a>
+    </h1>
+    <% } else { %>
+      <h2>Please</h2>
+        <a href="/users/new">Register</a>
+        <h3>or</h3>
+        <a href="/sessions/new">Log In</a>
+    <% } %>
       </ul>
-    </nav>    
+    </nav>
   </body>
 </html>

@@ -78,9 +78,18 @@ app.use(session({
 
 // Go to the Welcom Page
 app.get('/', (req, res) => {
-  res.render('index.ejs');
+  res.render('index.ejs', {
+    currentUser: req.session.currentUser
+  });
 })
 
+app.get('/app', (req, res) => {
+  if(req.session.currentUser) {
+    res.render('app/index.ejs')
+  } else {
+    res.redirect('/sessions/new')
+  }
+})
 
 // The controller references must be below the middleware
 
@@ -90,8 +99,8 @@ app.get('/', (req, res) => {
 const userController = require('./controllers/users.js');
 app.use('/users', userController);
 
-// const sessions Controller = require('./controllers/sessions.js');
-// app.use('/sessions', sessionsController);
+const sessionsController = require('./controllers/sessions.js');
+app.use('/sessions', sessionsController);
 
 //localhost:3000
 // app.get('/beers' , (req, res) => {
