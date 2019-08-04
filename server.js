@@ -1,13 +1,25 @@
-// console.log(process.env.MONGODB_URI);
 
-//___________________
-//Dependencies
-//___________________
+
+//========================================================
+// DEPENDENCIES
+//========================================================
+// Need this in order to use express
 const express = require('express');
+const app = express ();  // Define app as an express "thing"
+
+// Need this in order to override methods (needed for other than post and get)
 const methodOverride  = require('method-override');
+
+// Need mongoose in order to connect to mongo
 const mongoose = require ('mongoose');
-const app = express ();
-const db = mongoose.connection;
+const db = mongoose.connection;  // Define db as a connection to a mongo db
+
+// Require dotenv becuase it contains my Atlas project link
+require('dotenv').config();
+
+// Require express-session so that my app can do logins & authentication
+const session = require('express-session');
+
 //___________________
 //Port
 //___________________
@@ -18,9 +30,11 @@ const PORT = process.env.PORT || 3000;
 //Database
 //___________________
 // How to connect to the database either via heroku or locally
+// Set MONGODB_URI equal to the value of MONGODB_URI set in .env
 const MONGODB_URI = process.env.MONGODB_URI;
 
-// Fix Depreciation Warnings from Mongoose*
+
+// Fix Deprecation Warnings from Mongoose*
 // May or may not need these depending on your Mongoose version
 mongoose.set('useFindAndModify', false);
 mongoose.set('useCreateIndex', true);
@@ -33,30 +47,64 @@ db.on('error', (err) => console.log(err.message + ' is Mongod not running?'));
 db.on('connected', () => console.log('mongo connected: ', MONGODB_URI));
 db.on('disconnected', () => console.log('mongo disconnected'));
 
-//___________________
-//Middleware
-//___________________
+//========================================================
+// MIDDLEWARE
+//========================================================
 
-//use public folder for static assets
+// use public folder for static assets
 app.use(express.static('public'));
 
 // populates req.body with parsed info from forms - if no data from forms will return an empty object {}
-app.use(express.urlencoded({ extended: false }));// extended: false - does not allow nested objects in query strings
-app.use(express.json());// returns middleware that only parses JSON - may or may not need it depending on your project
+// extended: false - does not allow nested objects in query strings
+app.use(express.urlencoded({ extended: false }));
 
-//use method override
-app.use(methodOverride('_method'));// allow POST, PUT and DELETE from a form
+// returns middleware that only parses JSON - may or may not need it depending on your project
+app.use(express.json());
+
+// use method override - allow POST, PUT and DELETE from a form
+app.use(methodOverride('_method'));
+
+// used somehow for session authentication...
+app.use(session({
+  secret: process.env.SECRET,
+  resave: false,
+  saveUninitialized: false
+}));
 
 
-//___________________
-// Routes
-//___________________
+//========================================================
+// ROUTES
+//========================================================
+
+// Go to the Welcom Page
+app.get('/', (req, res) => {
+  res.render('index.ejs');
+})
+
+
+// The controller references must be below the middleware
+
+// const beerController = require('./controllers/beers.js');
+// app.use('/beer', beerController);
+
+const userController = require('./controllers/users.js');
+app.use('/users', userController);
+
+// const sessions Controller = require('./controllers/sessions.js');
+// app.use('/sessions', sessionsController);
+
 //localhost:3000
-app.get('/' , (req, res) => {
-  res.send('Hello World!');
-});
+// app.get('/beers' , (req, res) => {
+//   res.send('Hello World!');
+// });
 
-//___________________
-//Listener
-//___________________
-app.listen(PORT, () => console.log( 'Listening on port:', PORT));
+
+
+
+
+//========================================================
+// LISTENER
+//========================================================
+app.listen(PORT, () => {
+  console.log('Listening on port:', PORT)
+});
