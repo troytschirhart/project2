@@ -4,21 +4,45 @@
   <% include ./partials/head.ejs %>
 </head>
   <body>
-    <h1>
-    <% if (currentUser) { %>
-        Welcome <%=currentUser.username %>!
-        <form action="/sessions?_method=DELETE" method="POST">
-          <input type="submit" value="Log Out" >
-        </form>
-        <a href="/beers">Continue to Beer Page</a>
-    </h1>
-    <% } else { %>
-      <h2>Please</h2>
-        <a href="/users/new">Register</a>
-        <h3>or</h3>
-        <a href="/sessions/new">Log In</a>
-    <% } %>
-      </ul>
-    </nav>
+
+    <div class="headerContainer">
+      <h1>Welcome to the Beer App</h1>
+    </div>
+
+    <div class="containerContainer">
+
+      <div class="loginForm">
+
+        <h1 style="text-shadow: 1px 1px white">
+        <% if (currentUser) { %>
+            Welcome <%=currentUser.username %>!
+
+            <div class="buttonContainer">
+              <h1> </h1>
+              <form action="/sessions?_method=DELETE" method="POST">
+                <input type="submit" value="Log Out" class="button">
+              </form>
+              <form action="/beers">
+                <input type="submit" value="Continue to Beer Page" class="button">
+              </form>
+            </div>
+
+        </h1>
+        <% } else { %>
+          <div class="buttonContainer">
+            <h4 style="text-shadow: 1px 1px white";>Please</h4>
+            <form action="/users/new" >
+              <input type="submit" name="" value="Register" class="button">
+            </form>
+            <h4 style="text-shadow: 1px 1px white">or</h4>
+            <form action="/sessions/new" >
+              <input type="submit" name="" value="Log In" class="button">
+            </form>
+
+          </div>
+
+        <% } %>
+      </div>
+    </div>
   </body>
 </html>

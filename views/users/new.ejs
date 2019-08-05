@@ -1,15 +1,21 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-  </head>
+<head>
+  <% include ../partials/head.ejs %>
+</head>
   <body>
-    <h1>Create New User</h1>
-    <form action="/users" method="POST" >
-      <input type="text" name="username" placeholder="username" />
-      <input type="text" name="password" placeholder="password" />
-      <input type="submit" value="Create User" />       
-    </form>
+    <div class="headerContainer">
+      <h1>Create New User Login</h1>
+    </div>
+
+    <div class="containerContainer">
+
+      <form action="/users" method="POST" class="newForm">
+        Username: <input type="text" name="username" placeholder="username" class="inputBox"/><br/>
+        Password: <input type="text" name="password" placeholder="password" class="inputBox"/><br/>
+        <input type="submit" value="Create User" class="button"/><br/>
+      </form>
+
+    </div>
   </body>
 </html>

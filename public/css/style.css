@@ -1,6 +1,6 @@
 
 * {
-  background-color: blue;
+  /* background-color: blue; */
 }
 
 body {
@@ -112,4 +112,17 @@ body {
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
+  align-items: center;
+}
+
+.loginForm {
+  text-align: center;
+  border: 1px solid gold;
+  margin: 25px;
+  line-height: 25px;
+  padding: 15px;
+  background-color: #9099A2;
+  width: 40%;
+  border-radius: 25px;
+  opacity: .95;
 }
