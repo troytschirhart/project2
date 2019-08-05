@@ -5,22 +5,32 @@
 </head>
   <body>
 
-    <form action="/sessions?_method=DELETE" method="POST">
-      <input type="submit" value="Log Out" >
-    </form>
+    <div class="headerContainer">
 
-    <h1>Beers Index</h1>
-    <nav>
-      <a href="/beers/new">Add a new beer</a>
-    </nav>
+      <form action="/sessions?_method=DELETE" method="POST">
+        <input type="submit" value="Log Out" class="button">
+      </form>
 
-    <% for (let i = 0; i < beers.length; i++) { %>
-      <h2><%=beers[i].name%></h2>
-      <h3><%=beers[i].brewery%></h3>
-      <a href="/beers/<%=beers[i].id%>">
-        <img src="<%=beers[i].image%>" alt="">
-      </a>
+      <h1>Beers Index</h1>
 
-    <% } %>
+      <form action="/beers/new" >
+        <input type="submit" name="" value="Add a New Beer" class="button">
+      </form>
+
+    </div>
+
+    <div class="containerContainer">
+
+      <% for (let i = 0; i < beers.length; i++) { %>
+        <div class="beerContainer">
+          <h2><%=beers[i].name%></h2>
+          <h3><%=beers[i].type%></h3>
+          <h3><%=beers[i].brewery%></h3>
+          <a href="/beers/<%=beers[i].id%>">
+            <img src="<%=beers[i].image%>" alt="" class="beerPic">
+          </a>
+        </div>
+      <% } %>
+    </div>
   </body>
 </html>

@@ -5,19 +5,37 @@
 </head>
   <body>
 
-    <h1>Beer Details</h1>
-    <a href="/beers">Back to Beer Index Page</a>
+    <div class="headerContainer">
+      <h1>Beer Details</h1>
 
-    <h2>Name: <%=beer.name%></h2>
-    <h3>Brewery: <%=beer.brewery%></h3>
-    <img src="<%=beer.image%>" alt="">
-    <h3>Description: <%=beer.description%></h3>
-    <h3>Notes: <%=beer.notes%></h3>
+      <form action="/beers" >
+        <input type="submit" name="" value="Back to Beer Index Page" class="button">
+      </form>
 
-    <a href="/beers/<%=beer.id%>/edit">Edit this Beer</a>
-    <form action="/beers/<%=beer.id%>?_method=DELETE" method="POST" />
-      <input type="submit" value="DELETE" class="button" />
-    </form>
+    </div>
+
+    <div class="containerContainer">
+      <div class="showContainer">
+
+        <h2>Name: <%=beer.name%></h2>
+        <h3>Type: <%=beer.type%></h3>
+        <h3>Brewery: <%=beer.brewery%></h3>
+        <img src="<%=beer.image%>" alt="">
+        <h3>Description: <%=beer.description%></h3>
+        <h3>Rating: <%=beer.rating%></h3>
+        <h3>Notes: <%=beer.notes%></h3>
+
+        <div class="buttonContainer">
+          <form action="/beers/<%=beer.id%>/edit" />
+            <input type="submit" value="Edit this Beer" class="button" />
+          </form>
+
+          <form action="/beers/<%=beer.id%>?_method=DELETE" method="POST" />
+            <input type="submit" value="Delete this Beer" class="button" />
+          </form>
+        </div>
+      </div>
+    </div>
 
   </body>
 </html>

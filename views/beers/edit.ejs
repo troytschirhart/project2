@@ -4,14 +4,24 @@
     <% include ../partials/head.ejs %>
   </head>
   <body>
-    <form action="/beers/<%=beer.id%>?_method=PUT" method="POST">
-      Beer Name: <input type="text" name="name" value="<%=beer.name%>" /><br/>
-      Brewery: <input type="text" name="brewery" value="<%=beer.brewery%>" /><br/>
-      Image Link: <input type="text" name="image" value="<%=beer.image%>" /><br/>
-      Description: <input type="text" name="description" value="<%=beer.description%>"> <br/>
-      Notes: <input type="text" name="notes" value="<%=beer.notes%>">
-      <input type="submit" name="" value="Submit Changes" />
-    </form>
+    <div class="headerContainer">
+      <h1>Edit Beer Info</h1>
+    </div>
+
+    <div class="containerContainer">
+      <form action="/beers/<%=beer.id%>?_method=PUT" method="POST" class="newForm">
+        Beer Name: <input type="text" name="name" value="<%=beer.name%>" class="inputBox" /><br/>
+        Type: <input type="text" name="type" value="<%=beer.type%>" class="inputBox"/><br/>
+        Brewery: <input type="text" name="brewery" value="<%=beer.brewery%>" class="inputBox"/><br/>
+        Image Link: <input type="text" name="image" value="<%=beer.image%>" class="inputBox"/><br/>
+
+        Description: <input type="textarea" wrap="hard" name="description" value="<%=beer.description%>" class="inputBox paragraph"/><br/>
+
+        Rating: <input type="number" name="rating" value="<%=beer.rating%>" class="inputBox"/><br/>
+        Notes: <input type="text" name="notes" value="<%=beer.notes%>" class="inputBox paragraph"/><br/>
+        <input type="submit" name="" value="Submit Changes" class="button"/>
+      </form>
+    </div>
 
   </body>
 </html>

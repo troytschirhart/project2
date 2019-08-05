@@ -1,1 +1,115 @@
-// Try Materialize
+
+* {
+  background-color: blue;
+}
+
+body {
+  background-image: url('https://images.pexels.com/photos/533353/pexels-photo-533353.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500');
+}
+
+.headerContainer {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #96858F;
+  opacity: .95;
+  color: white;
+  text-shadow: 1px 1px black;
+  border: 1px solid black;
+}
+
+.headerContainer > nav > a, .headerContainer > a, .productContainer > a {
+  color: black;
+  text-shadow: 1px 1px white;
+  font-weight: 700;
+}
+
+.containerContainer {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+}
+
+.beerContainer {
+  color: white;
+  border: 1px solid gold;
+  margin: 5px;
+  text-align: center;
+  background-color: #9099A2;
+  padding: 0;
+  width: 20%;
+  height: 20%;
+  min-width: 350px;
+  height: 550px;
+  border-radius: 5px;
+  text-shadow: 1px 1px black;
+  opacity: .95;
+}
+
+.beerPic {
+  max-width: 250px;
+  max-height: 350px;
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin: 0 auto;
+  background-color: white;
+  border: 1px solid black;
+  box-shadow: 5px 5px rgba(0, 0, 0, 0.5);
+}
+
+.beerPic:hover, .beerPic:focus {
+  box-shadow: 5px 10px rgba(0, 0, 0, 0.3);
+  transform: translateY(-0.25em);
+}
+
+.showContainer {
+  color: white;
+  text-shadow: 1px 1px black;
+  border: 1px solid gold;
+  margin: 5px;
+  text-align: center;
+  background-color: #9099A2;
+  padding: 30px;
+  width: 60%;
+  height: 60%;
+  opacity: .95;
+  border-radius: 25px;
+}
+
+.button {
+  margin: 15px;
+  padding: 5px;
+  color: darkblue;
+  font-weight: bold;
+  border: 3px solid black;
+}
+
+.button:hover, .button:focus {
+  cursor: pointer;
+  border: 3px solid blue;
+  transform: translateY(-0.25em);
+}
+
+.newForm {
+  text-align: right;
+  border: 1px solid gold;
+  margin: 25px;
+  line-height: 25px;
+  padding: 15px;
+  background-color: #9099A2;
+  width: 40%;
+  border-radius: 25px;
+  opacity: .95;
+}
+
+.inputBox {
+  width: 80%;
+}
+
+.buttonContainer {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+}

@@ -5,15 +5,24 @@
 </head>
   <body>
 
-    <form action="/beers" method="POST">
-      Beer Name: <input type="text" name="name" /><br/>
-      Brewery: <input type="text" name="brewery" /><br/>
-      Image Link: <input type="text" name="image" /><br/>
-      Description: <input type="text" name="description" /><br/>
-      Notes: <input type="text" name="notes" /><br/>
-      <input type="submit" value="Add Beer" >
+    <div class="headerContainer">
+      <h1>Add A New Beer</h1>
+    </div>
 
-    </form>
+    <div class="containerContainer">
 
+      <form action="/beers" method="POST" class="newForm">
+        Beer Name: <input type="text" name="name" class="inputBox" /><br/>
+        Type: <input type="text" name="type" class="inputBox" /><br/>
+        Brewery: <input type="text" name="brewery" class="inputBox" /><br/>
+        Image Link: <input type="text" name="image" class="inputBox" /><br/>
+        Description: <input type="text" name="description" class="inputBox" /><br/>
+        Rating: <input type="number" name="rating" class="inputBox" /><br/>
+        Notes: <input type="text" name="notes" class="inputBox" /><br/>
+        <input type="submit" value="Add Beer" class="button">
+
+      </form>
+
+    </div>
   </body>
 </html>
