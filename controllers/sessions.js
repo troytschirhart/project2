@@ -34,10 +34,11 @@ sessions.post('/', (req, res) => {
   })
 })
 
+// Logout by deleting the session and returning to the welcome page
 sessions.delete('/', (req, res) => {
   console.log('trying to delete');
   req.session.destroy(() => {
-    res.render('index.ejs');
+    res.redirect('/');
   })
 })
 

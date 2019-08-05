@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <% include ../partials/head.ejs %>
+  </head>
+  <body>
+    <form action="/beers/<%=beer.id%>?_method=PUT" method="POST">
+      Beer Name: <input type="text" name="name" value="<%=beer.name%>" /><br/>
+      Brewery: <input type="text" name="brewery" value="<%=beer.brewery%>" /><br/>
+      Image Link: <input type="text" name="image" value="<%=beer.image%>" /><br/>
+      Description: <input type="text" name="description" value="<%=beer.description%>"> <br/>
+      <input type="submit" name="" value="Submit Changes" />
+    </form>
+
+  </body>
+</html>

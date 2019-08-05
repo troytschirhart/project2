@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <% include ../partials/head.ejs %>
+</head>
+  <body>
+
+    <form action="/sessions?_method=DELETE" method="POST">
+      <input type="submit" value="Log Out" >
+    </form>
+
+    <h1>Beers Index</h1>
+    <nav>
+      <a href="/beers/new">Add a new beer</a>
+    </nav>
+
+    <% for (let i = 0; i < beers.length; i++) { %>
+      <h2><%=beers[i].name%></h2>
+      <h3><%=beers[i].brewery%></h3>
+      <a href="/beers/<%=beers[i].id%>">
+        <img src="<%=beers[i].image%>" alt="">
+      </a>
+
+    <% } %>
+  </body>
+</html>

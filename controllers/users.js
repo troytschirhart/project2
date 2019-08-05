@@ -18,7 +18,7 @@ users.post('/', (req, res) => {
     if (err) {
       console.log(err);
     } else {
-    res.render('app/index.ejs');
+    res.render('beers/index.ejs');
     }
   });
 });

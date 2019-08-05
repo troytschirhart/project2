@@ -93,8 +93,8 @@ app.get('/app', (req, res) => {
 
 // The controller references must be below the middleware
 
-// const beerController = require('./controllers/beers.js');
-// app.use('/beer', beerController);
+const beerController = require('./controllers/beers.js');
+app.use('/beers', beerController);
 
 const userController = require('./controllers/users.js');
 app.use('/users', userController);

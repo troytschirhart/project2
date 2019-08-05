@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <% include ../partials/head.ejs %>
+</head>
+  <body>
+
+    <form action="/beers" method="POST">
+      Beer Name: <input type="text" name="name" /><br/>
+      Brewery: <input type="text" name="brewery" /><br/>
+      Image Link: <input type="text" name="image" /><br/>
+      Description: <input type="text" name="description" /><br/>
+      <input type="submit" value="Add Beer" >
+
+    </form>
+
+  </body>
+</html>
