@@ -8,10 +8,11 @@
     <h1>Beer Details</h1>
     <a href="/beers">Back to Beer Index Page</a>
 
-    <h2><%=beer.name%></h2>
-    <h3><%=beer.brewery%></h3>
+    <h2>Name: <%=beer.name%></h2>
+    <h3>Brewery: <%=beer.brewery%></h3>
     <img src="<%=beer.image%>" alt="">
-    <h3><%=beer.description%></h3>
+    <h3>Description: <%=beer.description%></h3>
+    <h3>Notes: <%=beer.notes%></h3>
 
     <a href="/beers/<%=beer.id%>/edit">Edit this Beer</a>
     <form action="/beers/<%=beer.id%>?_method=DELETE" method="POST" />
