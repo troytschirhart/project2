@@ -1,4 +1,4 @@
-module.exports = [
+const seedArray = [
   {
     name: 'Vanilla Porter',
     type: 'Porter',
@@ -92,3 +92,5 @@ module.exports = [
 
 
 ]
+
+module.exports = seedArray;

@@ -1,9 +1,12 @@
 const express = require('express');
 const beers = express.Router();
 const Beer = require('../models/beers.js');
-
+const User = require('../models/users.js');
 const seedData = require('../models/seed_data.js');
 
+// populates req.body with parsed info from forms - if no data from forms will return an empty object {}
+// extended: false - does not allow nested objects in query strings
+// beers.use(express.urlencoded({ extended: true }));
 
 //========================================================
 // ROUTES
@@ -19,7 +22,7 @@ beers.get('/seed', (req, res) => {
 beers.get('/' , (req, res) => {
   Beer.find({}, (error, allBeers) => {
     res.render('beers/index.ejs', {
-      beers: allBeers
+      currentUser: req.session.currentUser
     });
   })
 });
@@ -40,17 +43,25 @@ beers.post('/', (req, res) => {
 
 
 // ============================================ SHOW
-beers.get('/:id', (req, res) => {
-  Beer.findById(req.params.id, (err, foundBeer) => {
-    res.render('beers/show.ejs', {
-      beer: foundBeer
-    })
+beers.get('/:userID/:id', (req, res) => {
+  // currentUser: req.session.currentUser
+  User.findById(req.params.userID, (err, foundUser) => {
+    console.log(req.params.id);
+    console.log(req.beers.locals.beerArray[req.params.id]);
   })
+  // console.log(req.params.currentUser);
+  // console.log(currentUser.beerList[req.params.id]);     // changing to ind dbs
+  // Beer.findById(req.params.id, (err, foundBeer) => {
+  //   res.render('beers/show.ejs', {
+  //     beer: foundBeer
+  //   })
+  // })
 })
 
 
 // ============================================ EDIT
 beers.get('/:id/edit', (req, res) => {
+  // console.log(req.session.beerList[req.params.id]);     // changing to ind dbs
   Beer.findById(req.params.id, (err, foundBeer) => {
     res.render(
       'beers/edit.ejs',
