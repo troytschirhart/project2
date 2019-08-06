@@ -65,10 +65,7 @@ beers.get('/:id/edit', (req, res) => {
 // ============================================ UPDATE
 beers.put('/:id', (req, res) => {
   Beer.findByIdAndUpdate(req.params.id, req.body, {new:true}, (err, updatedBeer) => {
-    // res.redirect('/beers');
-    res.render('beers/show.ejs', {
-      beer: updatedBeer
-    })
+    res.redirect('/beers');
   });
 });
 
