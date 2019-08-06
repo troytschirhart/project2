@@ -20,8 +20,6 @@ require('dotenv').config();
 // Require express-session so that my app can do logins & authentication
 const session = require('express-session');
 
-// Require access to the seed data
-const seedArray = require('./models/seed_data.js')
 //___________________
 //Port
 //___________________
@@ -58,7 +56,7 @@ app.use(express.static('public'));
 
 // populates req.body with parsed info from forms - if no data from forms will return an empty object {}
 // extended: false - does not allow nested objects in query strings
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: false }));
 
 // returns middleware that only parses JSON - may or may not need it depending on your project
 app.use(express.json());
@@ -78,13 +76,12 @@ app.use(session({
 // ROUTES
 //========================================================
 
-// Go to the Welcome Page
+// Go to the Welcom Page
 app.get('/', (req, res) => {
   res.render('index.ejs', {
     currentUser: req.session.currentUser
-  }); console.log(seedArray.length);
+  });
 })
-
 
 app.get('/app', (req, res) => {
   if(req.session.currentUser) {

@@ -11,7 +11,7 @@
         <input type="submit" value="Log Out" class="button">
       </form>
 
-      <h1><%=currentUser.username%>'s Beers Index</h1>
+      <h1>Beers Index</h1>
 
       <form action="/beers/new" >
         <input type="submit" name="" value="Add a New Beer" class="button">
@@ -19,20 +19,15 @@
 
     </div>
 
-
-
     <div class="containerContainer">
 
-      <% for (let i = 0; i < currentUser.beerList.length; i++) { %>
+      <% for (let i = 0; i < beers.length; i++) { %>
         <div class="beerContainer">
-          <h2><%=currentUser.beerList[i].name%></h2>
-          <h3><%=currentUser.beerList[i].type%></h3>
-          <h3><%=currentUser.beerList[i].brewery%></h3>
-          <h3><%=currentUser.beerList[i].id%></h3>
-          <!-- <a href="/beers/<%=currentUser.beerList[i].id%>"> -->
-          <a href="/beers/<%=currentUser.id%>/<%=i%>">
-
-            <img src="<%=currentUser.beerList[i].image%>" alt="" class="beerPic">
+          <h2><%=beers[i].name%></h2>
+          <h3><%=beers[i].type%></h3>
+          <h3><%=beers[i].brewery%></h3>
+          <a href="/beers/<%=beers[i].id%>">
+            <img src="<%=beers[i].image%>" alt="" class="beerPic">
           </a>
         </div>
       <% } %>
